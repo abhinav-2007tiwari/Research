@@ -468,8 +468,9 @@ export function QuestionnaireStep() {
   };
 
   const isWordCountValid = (text) => {
+    if (!text || text.trim() === '') return true; // Optional: 0 words is valid
     const count = getWordCount(text);
-    return count >= 50 && count <= 150;
+    return count <= 150; // Max 150 words limit
   };
 
   // Helper validation status
@@ -703,12 +704,12 @@ export function QuestionnaireStep() {
           <span>Part 2: Open-Ended Feedback</span>
         </h3>
         <p className="text-xs text-gray-400 italic">
-          Please respond in 50 to 150 words for each item. The counter turns green when requirements are satisfied.
+          These questions are optional (maximum 150 words each). The counter turns red if you exceed the limit.
         </p>
 
         {/* Open Q1 */}
         <div>
-          <label className="block text-sm font-semibold text-gray-300 mb-2">1. Why did you make your choice?</label>
+          <label className="block text-sm font-semibold text-gray-300 mb-2">1. Why did you make your choice? (Optional)</label>
           <textarea
             name="whyChoice"
             rows="3"
@@ -730,7 +731,7 @@ export function QuestionnaireStep() {
 
         {/* Open Q2 */}
         <div>
-          <label className="block text-sm font-semibold text-gray-300 mb-2">2. Which part of the AI's response influenced your decision?</label>
+          <label className="block text-sm font-semibold text-gray-300 mb-2">2. Which part of the AI's response influenced your decision? (Optional)</label>
           <textarea
             name="influentialPart"
             rows="3"
@@ -752,7 +753,7 @@ export function QuestionnaireStep() {
 
         {/* Open Q3 */}
         <div>
-          <label className="block text-sm font-semibold text-gray-300 mb-2">3. Was there anything you found unhelpful or misleading?</label>
+          <label className="block text-sm font-semibold text-gray-300 mb-2">3. Was there anything you found unhelpful or misleading? (Optional)</label>
           <textarea
             name="unhelpfulOrMisleading"
             rows="3"
@@ -774,7 +775,7 @@ export function QuestionnaireStep() {
 
         {/* Open Q4 */}
         <div>
-          <label className="block text-sm font-semibold text-gray-300 mb-2">4. If you could improve the AI's advice, what would you change?</label>
+          <label className="block text-sm font-semibold text-gray-300 mb-2">4. If you could improve the AI's advice, what would you change? (Optional)</label>
           <textarea
             name="improvementSuggestion"
             rows="3"
