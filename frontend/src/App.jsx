@@ -106,6 +106,16 @@ function App() {
                 {/* Fallback */}
                 <Route path="*" element={<Navigate to="/" replace />} />
               </Routes>
+
+              {/* Subtle Admin Link */}
+              <div className="absolute bottom-4 right-4 z-30">
+                <Link 
+                  to="/admin/login" 
+                  className="text-xs text-gray-600 hover:text-[#7c6fff] transition-colors duration-300"
+                >
+                  Admin Panel
+                </Link>
+              </div>
             </div>
           </SurveyProvider>
         </Router>
